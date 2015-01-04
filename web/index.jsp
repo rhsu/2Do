@@ -46,8 +46,25 @@
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					Content here
-				</div>
+					<h2 class="sub-header">2Dos</h2>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% for(int i = 0; i < 3; i++) { %>
+							<tr>
+								<td><%= i+1 %></td>							
+								<td>Name</td>							
+								<td>Description</td>
+							</tr>
+							<% } %>
+						</tbody>
+					</table>
 			</div>
 		</div>
 		
