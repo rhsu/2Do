@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="/2Do/css/dashboard.css" />
     </head>
     <body>
+		<!-- TODO: Template This as Top Navbar -->
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -33,6 +34,7 @@
 			</div>
 		</nav>
 		
+		<!-- TODO: Template this as as Sidebar -->
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-3 col-md-2 sidebar">
