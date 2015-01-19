@@ -6,10 +6,15 @@
         <title>JSP Page</title>
     </head>
     <body>
-		<form>
+		<form method="post" action="AddTaskServlet">
 			<label>Name<input type="text" name="name"/></label> <br />
 			<label>Content<input type="text" name="content"/></label> <br />
 			<button>Save</button>
 		</form>
+		
+		<table>
+			<td></td>
+			
+		</table>
     </body>
 </html>
