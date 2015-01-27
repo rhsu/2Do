@@ -4,9 +4,17 @@
         <servlet-name>AddTaskServlet</servlet-name>
         <servlet-class>servlets.AddTaskServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayTaskServlet</servlet-name>
+        <servlet-class>servlets.DisplayTaskServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddTaskServlet</servlet-name>
         <url-pattern>/AddTaskServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayTaskServlet</servlet-name>
+        <url-pattern>/DisplayTaskServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
