@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Task;
+import models.UserTask;
 
 /**
  *
@@ -20,7 +20,7 @@ public class DisplayTaskServlet extends HttpServlet
 			throws ServletException, IOException 
 	{
 		//TODO: database call to get all the tasks
-		List<Task> tasks = new ArrayList<>();
+		List<UserTask> tasks = new ArrayList<>();
 		
 		
 		request.setAttribute("tasks", tasks);
