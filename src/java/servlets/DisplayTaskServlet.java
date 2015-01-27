@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelsExperimental.UserTask;
+import twoDo.models.TaskTemp;
+import twoDo.providers.TaskTempProvider;
 
 /**
  *
@@ -18,8 +20,8 @@ public class DisplayTaskServlet extends HttpServlet
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		//TODO: database call to get all the tasks
-		List<UserTask> tasks = new ArrayList<>();
+		TaskTempProvider provider = new TaskTempProvider();
+		List<TaskTemp> tasks = provider.getTasks(-1);
 		
 		
 		request.setAttribute("tasks", tasks);

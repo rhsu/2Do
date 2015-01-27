@@ -1,7 +1,7 @@
 package twoDo.providers;
 
+import java.util.ArrayList;
 import java.util.List;
-import modelsExperimental.UserTask;
 import twoDo.models.TaskTemp;
 
 public class TaskTempProvider 
@@ -16,8 +16,14 @@ public class TaskTempProvider
 		// TODO: database call that deletes task
 	}*/
 
-	public List<UserTask> getTasks(int userId) 
+	public List<TaskTemp> getTasks(int userId) 
 	{
-		return null;
+		List<TaskTemp> tasks = new ArrayList<>();
+		
+		tasks.add(new TaskTemp("item 1", "item 1 description"));
+		tasks.add(new TaskTemp("item 2", "item 1 description"));
+		tasks.add(new TaskTemp("item 3", "item 1 description"));
+		
+		return tasks;
 	}
 }
