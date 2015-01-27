@@ -8,13 +8,16 @@
         <title>JSP Page</title>
     </head>
     
+	<body>	
 		
 		<h1>List of Products From Server</h1>
 		
 		<c:import url="/DisplayTaskServlet" />
 		
-		<c:forEach var="product" items= "${products}" varStatus="i">
-			${product}<br>
+		<c:out value="{tasks}" />
+		
+		<c:forEach var="item" items= "${tasks}" varStatus="i">
+			${item}<br>
 		</c:forEach>
 		
 		<form method="post" action="AddTaskServlet">
@@ -28,4 +31,6 @@
 			
 		</table-->
     
+	</body>	
+		
 </html>

@@ -15,4 +15,10 @@ public class TaskTemp
 	public String getName() { return this.name; }
 	
 	public String getContent() { return this.content; }	
+	
+	@Override
+	public String toString()
+	{
+		return this.name + " " + this.content;
+	}
 }
