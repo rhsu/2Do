@@ -1,7 +1,7 @@
-package provider;
+package providerExperimental;
 
 import java.util.List;
-import models.Task;
+import modelsExperimental.Task;
 
 public interface TaskProvider<T extends Task>
 {

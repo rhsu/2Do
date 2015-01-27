@@ -1,7 +1,7 @@
-package provider;
+package providerExperimental;
 
 import java.util.List;
-import models.UserTask;
+import modelsExperimental.UserTask;
 
 public class UserTaskProvider implements TaskProvider<UserTask>
 {
