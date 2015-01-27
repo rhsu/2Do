@@ -13,8 +13,9 @@
 		
 		<c:import url="/DisplayTaskServlet" />
 		
-		<c:out value="${products}"></c:out>
-		
+		<c:forEach var="product" items= "${products}" varStatus="i">
+			${product}<br>
+		</c:forEach>
 		
 		<form method="post" action="AddTaskServlet">
 			<label>Name<input type="text" name="name"/></label> <br />

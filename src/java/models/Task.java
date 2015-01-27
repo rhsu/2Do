@@ -2,9 +2,15 @@ package models;
 
 public class Task 
 {
-	private String name;
-	private String content;
+	private final String name;
+	private final String content;
 	
-	public void getName(String name) { this.name = name; }
-	public void getContent(String content) { this.content = content; }
+	public Task(String name, String content)
+	{
+		this.name = name;
+		this.content = content;
+	}
+	
+	public String getName(String name) { return this.name; }
+	public String getContent(String content) { return this.content; }
 }
