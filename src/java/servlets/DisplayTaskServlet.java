@@ -30,14 +30,14 @@ public class DisplayTaskServlet extends HttpServlet
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-	//processRequest(request, response);
-		List<String> products = new ArrayList<>();
+		processRequest(request, response);
+		/*List<String> products = new ArrayList<>();
 		
 		products.add("Car");
 		products.add("Guns");
 		products.add("Shades");
 		
-		request.setAttribute("products", products);
+		request.setAttribute("products", products);*/
 	}
 
 	@Override

@@ -14,12 +14,14 @@
 		
 		<c:import url="/DisplayTaskServlet" />
 		
-		<c:out value="{tasks}" />
+		<c:out value="${tasks}" />
 		
+		<li>
 		<c:forEach var="item" items= "${tasks}" varStatus="i">
-			${item}<br>
+			<ul>${item.getName()}</ul>
 		</c:forEach>
-		
+		</li>
+			
 		<form method="post" action="AddTaskServlet">
 			<label>Name<input type="text" name="name"/></label> <br />
 			<label>Content<input type="text" name="content"/></label> <br />
