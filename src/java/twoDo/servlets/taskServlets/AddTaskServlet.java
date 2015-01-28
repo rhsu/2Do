@@ -1,4 +1,4 @@
-package servlets;
+package twoDo.servlets.taskServlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
