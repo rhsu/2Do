@@ -12,7 +12,7 @@
 		
 		<h1>List of Products From Server</h1>
 		
-		<c:import url="/DisplayTaskServlet" />
+		<c:import url="/DisplayTask" />
 		
 		<c:out value="${tasks}" />
 		
