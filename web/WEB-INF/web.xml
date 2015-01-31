@@ -8,6 +8,14 @@
         <servlet-name>DisplayTaskServlet</servlet-name>
         <servlet-class>twoDo.servlets.taskServlets.DisplayTaskServlet</servlet-class>
     </servlet>
+	<servlet-mapping>
+		<servlet-name>DisplayTaskServlet</servlet-name>
+		<url-pattern>/DisplayTaskServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddTaskServletPoC</servlet-name>
+		<url-pattern>/AddTaskServlet</url-pattern>
+	</servlet-mapping>
     <session-config>
         <session-timeout>
             30
