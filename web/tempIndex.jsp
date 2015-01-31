@@ -22,7 +22,7 @@
 		</c:forEach>
 		</li>
 			
-		<form method="post" action="AddTaskServlet">
+		<form method="post" action="AddTask">
 			<label>Name<input type="text" name="name"/></label> <br />
 			<label>Content<input type="text" name="content"/></label> <br />
 			<button>Save</button>
