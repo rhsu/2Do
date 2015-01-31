@@ -24,11 +24,12 @@ DROP TABLE IF EXISTS `Task`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Task` (
   `TaskId` int(11) NOT NULL,
+  `Name` varchar(16) DEFAULT NULL,
   `Content` varchar(128) DEFAULT NULL,
   `IsCompleted` bit(1) NOT NULL DEFAULT b'0',
   `IsActive` bit(1) NOT NULL DEFAULT b'1',
   `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ModifiedDate` timestamp NULL DEFAULT NULL,
+  `ModifiedDate` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`TaskId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,4 +47,4 @@ CREATE TABLE `Task` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-01-05 21:56:08
+-- Dump completed on 2015-01-19 15:02:24
