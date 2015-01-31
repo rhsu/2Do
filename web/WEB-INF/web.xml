@@ -10,11 +10,11 @@
     </servlet>
 	<servlet-mapping>
 		<servlet-name>DisplayTaskServlet</servlet-name>
-		<url-pattern>/DisplayTaskServlet</url-pattern>
+		<url-pattern>/DisplayTask</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AddTaskServletPoC</servlet-name>
-		<url-pattern>/AddTaskServlet</url-pattern>
+		<url-pattern>/AddTask</url-pattern>
 	</servlet-mapping>
     <session-config>
         <session-timeout>
