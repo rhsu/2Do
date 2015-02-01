@@ -21,9 +21,14 @@ public class TaskTempProvider
 		List<TaskTemp> tasks = new ArrayList<>();
 		
 		tasks.add(new TaskTemp("item 1", "item 1 description"));
-		tasks.add(new TaskTemp("item 2", "item 1 description"));
-		tasks.add(new TaskTemp("item 3", "item 1 description"));
+		tasks.add(new TaskTemp("item 2", "item 2 description"));
+		tasks.add(new TaskTemp("item 3", "item 3 description"));
 		
 		return tasks;
+	}
+	
+	public void addTask(int userId, TaskTemp task)
+	{
+		// TOOD: Database call to 
 	}
 }
