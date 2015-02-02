@@ -27,7 +27,7 @@ public class TaskTempProvider
 		return tasks;
 	}
 	
-	public void addTask(int userId, TaskTemp task)
+	public void createTask(int userId, TaskTemp task)
 	{
 		// TOOD: Database call to 
 	}

@@ -27,12 +27,7 @@
 			<label>Content<input type="text" name="content"/></label> <br />
 			<button>Save</button>
 		</form>
-		
-		<!--table>
-			<td></td>
-			
-		</table-->
-    
+		    
 	</body>	
 		
 </html>
