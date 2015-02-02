@@ -6,12 +6,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twoDo.providers.TaskTempProvider;
 
 public class AddTaskServletPoC extends HttpServlet 
 {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{	
+		// TODO: 
+		
 		String url = "/tempIndex.jsp";
         RequestDispatcher dispatcher =
              getServletContext().getRequestDispatcher(url);
@@ -29,6 +32,9 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
+		
+		TaskTempProvider provider = new TaskTempProvider();
+		provider.addTask(0, null);
 		processRequest(request, response);
 	}
 }
