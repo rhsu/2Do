@@ -1,5 +1,6 @@
 package twoDo.test;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ public class SqlTest
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
+	private CallableStatement cst;
 	
 	public SqlTest()
 	{
@@ -48,6 +50,18 @@ public class SqlTest
 		catch(Exception ex)
 		{
 			System.out.println(ex);
+		}
+	}
+	
+	public void insertRecord(String name, String content)
+	{
+		try
+		{
+			rs = st.executeQuery(name);
+		}
+		catch(Exception ex)
+		{
+			
 		}
 	}
 	
