@@ -13,9 +13,7 @@ public class AddTaskServletPoC extends HttpServlet
 {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
-	{	
-		// TODO: 
-		
+	{			
 		String url = "/tempIndex.jsp";
         RequestDispatcher dispatcher =
              getServletContext().getRequestDispatcher(url);
