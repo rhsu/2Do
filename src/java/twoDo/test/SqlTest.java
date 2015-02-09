@@ -57,17 +57,23 @@ public class SqlTest
 	{
 		try
 		{
-			rs = st.executeQuery(name);
+			//rs = st.executeQuery(name);
+			cst = con.prepareCall("{call Task_Create(?, ?)}");
+			cst.setString("pTaskName", name);
+			cst.setString("pTaskContent", content);
+			
+			cst.executeUpdate();
 		}
 		catch(Exception ex)
 		{
-			
+			System.out.println(ex);
 		}
 	}
 	
 	public static void main(String[] args)
 	{
 		SqlTest test = new SqlTest();
-		test.getData();
+		// test.getData();
+		test.insertRecord("name", "test");
 	}
 }
