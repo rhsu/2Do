@@ -57,7 +57,6 @@ public class SqlTest
 	{
 		try
 		{
-			//rs = st.executeQuery(name);
 			cst = con.prepareCall("{call Task_Create(?, ?)}");
 			cst.setString("pTaskName", name);
 			cst.setString("pTaskContent", content);
