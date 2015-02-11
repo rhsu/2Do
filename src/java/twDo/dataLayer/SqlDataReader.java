@@ -1,4 +1,4 @@
-package twoDo.test;
+package twDo.dataLayer;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -7,25 +7,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SqlTest 
+public class SqlDataReader 
 {
 	private Connection con;
 	private Statement st;
 	private ResultSet rs;
 	private CallableStatement cst;
 	
-	public SqlTest()
+	public SqlDataReader()
 	{
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/2Do",
 							"root",
 							"password");
 			st = con.createStatement();
 		}
-		catch(ClassNotFoundException | SQLException ex)
+		catch(SQLException ex)
 		{
 			System.out.println(ex);
 		}
@@ -71,7 +70,7 @@ public class SqlTest
 	
 	public static void main(String[] args)
 	{
-		SqlTest test = new SqlTest();
+		SqlDataReader test = new SqlDataReader();
 		// test.getData();
 		test.insertRecord("name", "test");
 	}
