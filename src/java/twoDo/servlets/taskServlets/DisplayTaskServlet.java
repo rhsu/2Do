@@ -19,7 +19,8 @@ public class DisplayTaskServlet extends HttpServlet
 			throws ServletException, IOException 
 	{
 		TaskTempProvider provider = new TaskTempProvider();
-		List<TaskTemp> tasks = provider.getTasks(-1);
+		int userId = -1;
+		List<TaskTemp> tasks = provider.getTasks(userId);
 		
 		request.setAttribute("tasks", tasks);
 	}
