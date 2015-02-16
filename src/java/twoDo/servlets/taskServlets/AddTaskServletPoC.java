@@ -6,7 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import twoDo.models.TaskTemp;
 import twoDo.providers.TaskTempProvider;
 
 public class AddTaskServletPoC extends HttpServlet 
@@ -34,9 +33,7 @@ public class AddTaskServletPoC extends HttpServlet
 		TaskTempProvider provider = new TaskTempProvider();
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
-		TaskTemp task = new TaskTemp(name, content);
-		
-		provider.createTask(0, task);
+		provider.insertTask(name, content);
 		processRequest(request, response);
 	}
 }

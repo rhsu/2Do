@@ -23,14 +23,31 @@ public class TaskTempProvider
 		dataLayer = new DataLayer();
 	}
 	
-	public TaskTemp createTask(String name, String content) 
+	public void insertTask(String name, String content) 
 	{	
-		return new TaskTemp(name, content);
+		try
+		{
+			connection = dataLayer.getConnection();
+			statement = connection.prepareCall("{call Task_Create(?, ?)}");
+			statement.setString("pTaskName", name);
+			statement.setString("pTaskContent", content);
+			statement.executeUpdate();
+		}
+		catch(SQLException ex)
+		{
+			Logger.getLogger(TaskTempProvider.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		finally
+		{
+			try { connection.close(); } catch (Exception e) { }
+			try { statement.close();  } catch (Exception e) { }
+			try { rs.close();		  } catch (Exception e) { }
+		}
 	}
 
 	public void deleteTask() 
 	{
-		// TODO: database call that deletes task
+		//TODO:
 	}
 
 	public List<TaskTemp> getTasks(int userId) 
@@ -41,7 +58,6 @@ public class TaskTempProvider
 		{			
 			connection = dataLayer.getConnection();
 			statement = connection.prepareCall("{call Task_Select() }");
-			//rs = statement.executeQuery();
 			
 			rs = statement.executeQuery();
 			
@@ -65,10 +81,5 @@ public class TaskTempProvider
 		
 		
 		return tasks;
-	}
-	
-	public void createTask(int userId, TaskTemp task)
-	{
-		// TOOD: Database call to 
 	}
 }
