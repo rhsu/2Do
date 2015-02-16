@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import twDo.dataLayer.DataLayer;
 import twoDo.models.TaskTemp;
+import twoDo.models.TaskTempBuilder;
 
 public class TaskTempProvider 
 {
@@ -67,7 +68,13 @@ public class TaskTempProvider
 			{
 				String name = rs.getString("Name");
 				String content = rs.getString("Content");
-				tasks.add(new TaskTemp(name, content));
+				TaskTemp task = new TaskTempBuilder()
+					.setUserId(userId)
+					.setName(name)
+					.setContent(content)
+					.buildTaskTemp();
+				
+				tasks.add(task);
 			}
 		} 
 		catch (SQLException ex) 
