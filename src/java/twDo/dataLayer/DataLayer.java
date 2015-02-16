@@ -17,12 +17,13 @@ public class DataLayer
 	{
 		try 
 		{
+			Class.forName("com.mysql.jdbc.Driver");
 			return DriverManager
 					.getConnection("jdbc:mysql://localhost:3306/2Do",
 							"root",
 							"password");
 		}
-		catch (SQLException ex) 
+		catch (ClassNotFoundException | SQLException ex) 
 		{
 			Logger.getLogger(DataLayer.class.getName()).log(Level.SEVERE, null, ex);
 			return null;
