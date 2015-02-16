@@ -52,8 +52,16 @@
 					
 					<h2 class="sub-header">2Dos</h2>
 					
-					<form>
-						
+					<form method="post" action="AddTask">
+						<label>
+							Name
+							<input type="text" name="name" /> <br />
+						</label>						
+						<label>
+							Content
+							<input type="text" name="content"/> <br />
+						</label>
+						<button class="btn btn-primary">Create Task</button>
 					</form>
 					<table class="table table-striped">
 						<thead>
