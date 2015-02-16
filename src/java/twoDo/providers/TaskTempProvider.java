@@ -41,19 +41,32 @@ public class TaskTempProvider
 		}
 		finally
 		{
-			try { connection.close(); } catch (Exception e) { }
-			try { statement.close();  } catch (Exception e) { }
-			try { rs.close();		  } catch (Exception e) { }
+			CloseConnections();
 		}
-	}
-
-	public void deleteTask() 
-	{
-		//TODO:
 	}
 	
 	public void updateTask(TaskTemp task)
 	{
+		try
+		{
+			connection = dataLayer.getConnection();
+			statement = connection.prepareCall("{ call Task_Update(?, ?) }");
+			statement.setString("pContent", task.getContent());
+			statement.setString("pName", task.getName());
+			
+			// TODO: When Deleting task, we need this extra select field.
+			// statement.setBoolean("pIsActive", task.isActive());
+			
+			statement.executeUpdate();
+		}
+		catch (SQLException ex)
+		{
+			Logger.getLogger(TaskTempProvider.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		finally
+		{
+			CloseConnections();
+		}
 	}
 
 	public List<TaskTemp> getTasks(int userId) 
@@ -87,12 +100,17 @@ public class TaskTempProvider
 		}
 		finally
 		{
-			try { connection.close(); } catch (Exception e) { }
-			try { statement.close();  } catch (Exception e) { }
-			try { rs.close();		  } catch (Exception e) { }
+			CloseConnections();
 		}
 		
 		
 		return tasks;
+	}
+	
+	private void CloseConnections()
+	{
+		try { connection.close(); } catch (Exception e) { }
+		try { statement.close();  } catch (Exception e) { }
+		try { rs.close();		  } catch (Exception e) { }
 	}
 }
