@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -46,7 +47,22 @@
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					
+					<c:import url="/DisplayTask" />
+					
 					<h2 class="sub-header">2Dos</h2>
+					
+					<form method="post" action="AddTask">
+						<label>
+							Name
+							<input type="text" name="name" /> <br />
+						</label>						
+						<label>
+							Content
+							<input type="text" name="content"/> <br />
+						</label>
+						<button class="btn btn-primary">Create Task</button>
+					</form>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -56,13 +72,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<% for(int i = 0; i < 3; i++) { %>
-							<tr>
-								<td><%= i+1 %></td>							
-								<td>Name</td>							
-								<td>Description</td>
-							</tr>
-							<% } %>
+
+							<c:forEach var="item" items= "${tasks}" varStatus="i">
+								<tr>
+									<td>${i.getIndex()+1}</td>
+									<td>${item.getName()}</td>
+									<td>${item.getContent()}</td>
+								</tr>
+								
+							</c:forEach>
+							
 						</tbody>
 					</table>
 			</div>
