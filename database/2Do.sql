@@ -78,12 +78,10 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Task_Select`()
 Select
-(
 	`TaskId`
 	,`Name`
 	,`Content`
 	,`IsCompleted`
-)
 FROM
 	`Task`
 WHERE
@@ -103,4 +101,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-15 12:05:48
+-- Dump completed on 2015-02-16 11:31:32

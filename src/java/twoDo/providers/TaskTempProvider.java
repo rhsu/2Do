@@ -40,7 +40,9 @@ public class TaskTempProvider
 		try 
 		{			
 			connection = dataLayer.getConnection();
-			statement = connection.prepareCall("{call Task_Select}");
+			statement = connection.prepareCall("{call Task_Select() }");
+			//rs = statement.executeQuery();
+			
 			rs = statement.executeQuery();
 			
 			while (rs.next())
