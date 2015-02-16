@@ -51,6 +51,10 @@ public class TaskTempProvider
 	{
 		//TODO:
 	}
+	
+	public void updateTask(TaskTemp task)
+	{
+	}
 
 	public List<TaskTemp> getTasks(int userId) 
 	{
