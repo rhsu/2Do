@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import twDo.dataLayer.DataLayer;
 import twoDo.models.TaskTemp;
+import twoDo.models.TaskTempBuilder;
 
 public class TaskTempProvider 
 {
@@ -23,15 +24,15 @@ public class TaskTempProvider
 		dataLayer = new DataLayer();
 	}
 	
-	public void insertTask(int userId, String name, String content) 
+	public void insertTask(TaskTemp task) 
 	{	
 		try
 		{
 			connection = dataLayer.getConnection();
 			statement = connection.prepareCall("{call Task_Create(?, ?)}");
-			statement.setString("pTaskName", name);
-			statement.setString("pTaskContent", content);
-			// statement.setInt("pUserId", userId);
+			statement.setString("pTaskName", task.getName());
+			statement.setString("pTaskContent", task.getContent());
+			// statement.setInt("pUserId", task.getUserId());
 			statement.executeUpdate();
 		}
 		catch(SQLException ex)
@@ -67,7 +68,13 @@ public class TaskTempProvider
 			{
 				String name = rs.getString("Name");
 				String content = rs.getString("Content");
-				tasks.add(new TaskTemp(name, content));
+				TaskTemp task = new TaskTempBuilder()
+					.setUserId(userId)
+					.setName(name)
+					.setContent(content)
+					.buildTaskTemp();
+				
+				tasks.add(task);
 			}
 		} 
 		catch (SQLException ex) 

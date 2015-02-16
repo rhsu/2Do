@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twoDo.models.TaskTemp;
+import twoDo.models.TaskTempBuilder;
 import twoDo.providers.TaskTempProvider;
 
 public class AddTaskServletPoC extends HttpServlet 
@@ -34,7 +36,14 @@ public class AddTaskServletPoC extends HttpServlet
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
 		int userId = -1;
-		provider.insertTask(userId, name, content);
+		
+		TaskTemp task = new TaskTempBuilder()
+			.setUserId(userId)
+			.setContent(content)
+			.setName(name)
+			.buildTaskTemp();
+		
+		provider.insertTask(task);
 		processRequest(request, response);
 	}
 }

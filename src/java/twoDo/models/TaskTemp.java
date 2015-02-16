@@ -4,17 +4,20 @@ public class TaskTemp
 {
 	private final String name;
 	private final String content;
-	// private final int userId;
+	private final int userId;
 	
-	public TaskTemp(String name, String content)
+	TaskTemp(int userId, String name, String content)
 	{
 		this.name = name;
 		this.content = content;
+		this.userId = userId;
 	}
 
 	public String getName() { return this.name; }
 	
 	public String getContent() { return this.content; }	
+	
+	public int getUserId() { return this.userId; }
 	
 	@Override
 	public String toString()
