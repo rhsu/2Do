@@ -28,10 +28,10 @@ public class TaskTempProvider
 		return new TaskTemp(name, content);
 	}
 
-	/*public void deleteTask() 
+	public void deleteTask() 
 	{
 		// TODO: database call that deletes task
-	}*/
+	}
 
 	public List<TaskTemp> getTasks(int userId) 
 	{
@@ -40,7 +40,7 @@ public class TaskTempProvider
 		try 
 		{			
 			connection = dataLayer.getConnection();
-			statement = connection.prepareCall("{call thing}");
+			statement = connection.prepareCall("{call Task_Select}");
 			rs = statement.executeQuery();
 			
 			while (rs.next())
