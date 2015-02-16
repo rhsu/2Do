@@ -24,15 +24,15 @@ public class TaskTempProvider
 		dataLayer = new DataLayer();
 	}
 	
-	public void insertTask(int userId, String name, String content) 
+	public void insertTask(TaskTemp task) 
 	{	
 		try
 		{
 			connection = dataLayer.getConnection();
 			statement = connection.prepareCall("{call Task_Create(?, ?)}");
-			statement.setString("pTaskName", name);
-			statement.setString("pTaskContent", content);
-			// statement.setInt("pUserId", userId);
+			statement.setString("pTaskName", task.getName());
+			statement.setString("pTaskContent", task.getContent());
+			// statement.setInt("pUserId", task.getUserId());
 			statement.executeUpdate();
 		}
 		catch(SQLException ex)
