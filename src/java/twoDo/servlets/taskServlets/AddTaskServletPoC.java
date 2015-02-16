@@ -33,7 +33,8 @@ public class AddTaskServletPoC extends HttpServlet
 		TaskTempProvider provider = new TaskTempProvider();
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
-		provider.insertTask(name, content);
+		int userId = -1;
+		provider.insertTask(userId, name, content);
 		processRequest(request, response);
 	}
 }

@@ -17,6 +17,6 @@ public class main
 			System.out.println(task.getContent() + " " + task.getName()); 
 		}
 		
-		provider.insertTask("name", "Some content here");
+		provider.insertTask(-1, "name", "Some content here");
 	}
 }
