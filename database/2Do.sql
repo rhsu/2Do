@@ -27,11 +27,11 @@ CREATE TABLE `Task` (
   `Name` varchar(16) DEFAULT NULL,
   `Content` varchar(128) DEFAULT NULL,
   `IsCompleted` bit(1) NOT NULL DEFAULT b'0',
-  `IsActive` bit(1) NOT NULL DEFAULT b'1',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0',
   `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifiedDate` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`TaskId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -82,10 +82,11 @@ Select
 	,`Name`
 	,`Content`
 	,`IsCompleted`
+	,`IsDeleted`
 FROM
 	`Task`
 WHERE
-	`IsActive` = 1 ;;
+	`IsDeleted` = 0 ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -101,4 +102,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-16 11:31:32
+-- Dump completed on 2015-02-16 19:59:36

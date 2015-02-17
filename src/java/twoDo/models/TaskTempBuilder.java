@@ -9,6 +9,8 @@ public class TaskTempBuilder
 	private int userId;
 	private String name;
 	private String content;
+	private boolean isCompleted;
+	private boolean isDeleted;
 	
 	public TaskTempBuilder() { }
 	
@@ -30,8 +32,24 @@ public class TaskTempBuilder
 		return this;
 	}
 	
+	public TaskTempBuilder setIsDeleted(boolean isDeleted)
+	{
+		this.isDeleted = isDeleted;
+		return this;
+	}
+	
+	public TaskTempBuilder setIsCompleted(boolean isCompleted)
+	{
+		this.isCompleted = isCompleted;
+		return this;
+	}
+	
 	public TaskTemp buildTaskTemp()
 	{
-		return new TaskTemp(userId, name, content);
+		return new TaskTemp(userId, 
+			name, 
+			content,
+			isCompleted,
+			isDeleted);
 	}
 }
