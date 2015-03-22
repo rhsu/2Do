@@ -34,27 +34,30 @@
 					
 					<jsp:include page="/includes/AddTaskForm.jsp" />
 
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Name</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<tbody>
-
-							<c:forEach var="item" items= "${tasks}" varStatus="i">
+					<form method="post" action="EditTasks">					
+						<table class="table table-striped">
+							<thead>
 								<tr>
-									<td>${i.getIndex()+1}</td>
-									<td>${item.getName()}</td>
-									<td>${item.getContent()}</td>
+									<th>#</th>
+									<th><input type="checkbox" /> Name</th>
+									<th>Description</th>
 								</tr>
-								
-							</c:forEach>
-							
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="item" items= "${tasks}" varStatus="i">
+									<tr>
+										<td>${i.getIndex()+1}</td>
+										<td>
+											<input type="checkbox" name="id" value={item.getName()}/>
+											${item.getName()}
+										</td>
+										<td>${item.getContent()}</td>
+									</tr>
+
+								</c:forEach>
+							</tbody>
+						</table>
+					</form>
 			</div>
 		</div>
     </body>
