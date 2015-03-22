@@ -7,6 +7,10 @@
         <title>2Do</title>
 		<link rel="stylesheet" href="/2Do/css/bootstrap.css" />
 		<link rel="stylesheet" href="/2Do/css/dashboard.css" />
+		
+		<!--scripts -->
+		<script src="/2Do/js/jquery.js"></script>
+		<script src="/2Do/js/bootstrap.js"></script>
     </head>
     <body>
 		<jsp:include page="/includes/TopNavbar.jsp"/>
@@ -53,9 +57,5 @@
 					</table>
 			</div>
 		</div>
-		
-		<!--scripts -->
-		<script src="/2Do/js/jquery.js"></script>
-		<script src="/2Do/js/bootstrap.js"></script>
     </body>
 </html>
