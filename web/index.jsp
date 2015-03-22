@@ -23,22 +23,13 @@
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-					
+										
 					<c:import url="/DisplayTask" />
 					
 					<h2 class="sub-header">2Dos</h2>
 					
-					<form method="post" action="AddTask">
-						<label>
-							Name
-							<input type="text" name="name" />
-						</label>						
-						<label>
-							Content
-							<input type="text" name="content"/>
-						</label>
-						<button class="btn btn-primary">Create Task</button>
-					</form>
+					<jsp:include page="/includes/AddTaskForm.jsp" />
+
 					<table class="table table-striped">
 						<thead>
 							<tr>
