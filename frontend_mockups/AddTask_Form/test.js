@@ -5,6 +5,7 @@ $( document ).ready(function() {
 		if (state === 'readonly') {
 			state = 'post';
 		} else if (state === 'post') {
+			console.log('error checking!');
 			// state = 'readonly'
 			// do nothing for now maybe clean this up later
 			// posting to the server will trigger a reload so no need to determine the next state
@@ -32,24 +33,32 @@ $( document ).ready(function() {
 	var readonlyState = function () {
 		// hide form fields
 		$('#AddTaskForm label').hide();
-		$('#AddTaskForm_ErrorMessage').hide();
+		$('#errorMessage_AddTaskForm').hide();
+		$('#btnX_AddTaskForm').hide();
 	};
 	
 	var postToServerState = function () {
+		// display form fields
+		$('#AddTaskForm label').show();
+		// $('#errorMessage_AddTaskForm').hide();
+		$('#btnX_AddTaskForm').show();
 	};
 	
-	$('#btnAddTaskForm').click(function () {
+	// end of variable declaration..
+	
+	readonlyState();
+	
+	$('#btnAddTask_AddTaskForm').click(function () {
 		event.preventDefault();
 		
 		// clicking on the button transitions the state
-		pageState = determineNextState(pageState);
+		formState = determineNextState(formState);
 		
 		determineStateFunctionality();
-		
 	});	
 	
 	
-	/*$('#btnAddTaskForm').click(function () {
-
-	});*/
+	$('#btnX_AddTaskForm').click(function () {
+		readonlyState();
+	});
 });
