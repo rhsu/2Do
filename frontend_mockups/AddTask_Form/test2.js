@@ -26,8 +26,13 @@ $(document).ready(function() {
         display();
     });
     
-    $ ('#btnX_AddTaskForm').click(function () {
+    $('#btnX_AddTaskForm').click(function () {
         state = 'initial';
         display();
+    });
+    
+    $('#btnAddTask_AddTaskForm').click(function () {
+        event.preventDefault();
+        console.log('error checking');
     });
 });
