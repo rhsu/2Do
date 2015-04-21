@@ -40,9 +40,11 @@ $(document).ready(function() {
             addTaskFormErrorMessage += 'Name is empty<br/>';
         }
 
-        if (isContentEmpty) {
+        // content is an optional field but this is nice to have to demonstrate 
+        // how easy it is to disable this error checking
+        /*if (isContentEmpty) {
             addTaskFormErrorMessage += 'Content is empty<br/>';
-        }
+        }*/
 
         if (addTaskFormErrorMessage === '') {
             
