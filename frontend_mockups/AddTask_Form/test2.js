@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+    // error checking
+    
+    function isEmptyString (str) {
+        return str.replace(/^\s+|\s+$/gm,'').length == 0;
+    };
+        
+    // state machine
+    
     var state = 'initial';
     
 	var display = function () {
@@ -12,12 +20,37 @@ $(document).ready(function() {
             $('#initialPageState_AddTaskForm').show();
             $('#formPageState_AddTaskForm').hide();
         }
+        else if (state === 'errorChecking') {
+            $('#initialPageState_AddTaskForm').hide();
+        }
         else {
             console.log(state);
         }
     };
     
+    // main
     display();
+    
+    var errorChecking = function () {
+        var isNameEmpty = isEmptyString($('#AddTaskForm_txtName').val());
+        var isContentEmpty = isEmptyString($('#AddTaskForm_txtContent').val());
+        var addTaskFormErrorMessage = '';
+
+        if (isNameEmpty) {
+            addTaskFormErrorMessage += 'Name is empty<br/>';
+        }
+
+        if (isContentEmpty) {
+            addTaskFormErrorMessage += 'Content is empty<br/>';
+        }
+
+        if (addTaskFormErrorMessage === '') {
+            
+        }
+        else {
+            
+        }
+    };
     
     // event listeners
     
@@ -34,5 +67,6 @@ $(document).ready(function() {
     $('#btnAddTask_AddTaskForm').click(function () {
         event.preventDefault();
         console.log('error checking');
+        errorChecking();
     });
 });
