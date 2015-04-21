@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     
-    function isEmptyString (str) {
-        return str.replace(/^\s+|\s+$/gm,'').length == 0;
-    };
+    function isEmptyString(str) {
+        return str.replace(/^\s+|\s+$/gm,'').length === 0;
+    }
         
     // state machine
     
@@ -13,27 +13,22 @@ $(document).ready(function() {
         if (state === 'form') {
             $('#initialPageState_AddTaskForm').hide();
             $('#formPageState_AddTaskForm').show();
-        }
-        else if (state === 'initial') {
+        } else if (state === 'initial') {
             $('#initialPageState_AddTaskForm').show();
             $('#formPageState_AddTaskForm').hide();
-        }
-        else if (state === 'errorChecking') {
+        } else if (state === 'errorChecking') {
             $('#initialPageState_AddTaskForm').hide();
-        }
-        else {
+        } else {
             console.log(state);
         }
-    };
-    
-    // main
-    display();
-    
+    },
+        
     // error checking
     var errorChecking = function () {
-        var isNameEmpty = isEmptyString($('#AddTaskForm_txtName').val());
-        var isContentEmpty = isEmptyString($('#AddTaskForm_txtContent').val());
-        var addTaskFormErrorMessage = '';
+        
+        var isNameEmpty = isEmptyString($('#AddTaskForm_txtName').val()),
+            isContentEmpty = isEmptyString($('#AddTaskForm_txtContent').val()),
+            addTaskFormErrorMessage = '';
 
         if (isNameEmpty) {
             addTaskFormErrorMessage += 'Name is empty<br/>';
@@ -47,11 +42,13 @@ $(document).ready(function() {
 
         if (addTaskFormErrorMessage === '') {
             
-        }
-        else {
+        } else {
             
         }
     };
+    
+    // main
+    display();
     
     // event listeners
     
