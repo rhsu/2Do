@@ -1,6 +1,4 @@
 $(document).ready(function() {
-
-    // error checking
     
     function isEmptyString (str) {
         return str.replace(/^\s+|\s+$/gm,'').length == 0;
@@ -31,6 +29,7 @@ $(document).ready(function() {
     // main
     display();
     
+    // error checking
     var errorChecking = function () {
         var isNameEmpty = isEmptyString($('#AddTaskForm_txtName').val());
         var isContentEmpty = isEmptyString($('#AddTaskForm_txtContent').val());
