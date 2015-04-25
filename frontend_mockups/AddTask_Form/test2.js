@@ -21,7 +21,7 @@ $(document).ready(function () {
         } else {
             console.log(state);
         }
-    },
+    }
         
     // error checking
     var errorChecking = function () {
@@ -41,11 +41,11 @@ $(document).ready(function () {
         }*/
 
         if (addTaskFormErrorMessage === '') {
-            
+            $('#AddTaskForm').submit();
         } else {
             
         }
-    };
+    }
     
     // main
     display();
@@ -64,7 +64,7 @@ $(document).ready(function () {
     
     $('#btnAddTask_AddTaskForm').click(function () {
         event.preventDefault();
-        console.log('error checking');
+        // console.log('error checking');
         errorChecking();
     });
 });
