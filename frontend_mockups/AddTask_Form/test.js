@@ -16,7 +16,7 @@ $( document ).ready(function() {
 		return state;
 	};
 	
-	var determineStateFunctionality = function () {
+	var determineStateFunctionality = function (event) {
 		event.preventDefault();
 		
 		if (formState === 'readonly') {
@@ -48,13 +48,13 @@ $( document ).ready(function() {
 	
 	readonlyState();
 	
-	$('#btnAddTask_AddTaskForm').click(function () {
+	$('#btnAddTask_AddTaskForm').click(function (event) {
 		event.preventDefault();
 		
 		// clicking on the button transitions the state
 		formState = determineNextState(formState);
 		
-		determineStateFunctionality();
+		determineStateFunctionality(event);
 	});	
 	
 	
