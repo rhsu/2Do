@@ -4,8 +4,7 @@ $(document).ready(function () {
         return str.replace(/^\s+|\s+$/gm,'').length === 0;
     }
         
-    // state machine
-    
+    // state machine declaration    
     var state = 'initial';
     
 	var display = function () {
@@ -51,7 +50,6 @@ $(document).ready(function () {
     display();
     
     // event listeners
-    
     $('#btnAddTask_AddTaskInitial').click(function () {
         state = 'form';
         display();
@@ -62,9 +60,8 @@ $(document).ready(function () {
         display();
     });
     
-    $('#btnAddTask_AddTaskForm').click(function () {
+    $('#btnAddTask_AddTaskForm').click(function (event) {
         event.preventDefault();
-        // console.log('error checking');
         errorChecking();
     });
 });
