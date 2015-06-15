@@ -4,21 +4,24 @@
 	<head>
 		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' />
 		<script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
-		<script src='test.js'></script>
+		<script src='index.js'></script>
 	</head>
-
+	
 	<body>
-		<form id='AddTaskForm' method='post' action='AddTask'> <!--Action is AddTask -->
-			<label>Name
-				<input type='text' name='name' />
-			</label>						
-			<label>Content
-				<input type='text' name='content'/>
-			</label>
-			<button id='btnAddTask_AddTaskForm' class='btn btn-primary'>Add Task</button>
-			<button type='reset' id='btnX_AddTaskForm' class='btn btn-danger'>X</button>
-		</form>
-
-		<p id='errorMessage_AddTaskForm' class='bg-danger'>Please fill out both fields</p>
-	</body>
+		<div id='initialPageState_AddTaskForm'>
+			<button id='btnAddTask_AddTaskInitial' class='btn btn-primary'>Add Task</button>
+		</div>
+		<div id='formPageState_AddTaskForm'>
+			<form id='AddTaskForm' method='post' action='AddTask'>
+				<label>Name
+					<input id='AddTaskForm_txtName' type='text' name='name' />
+                </label>						
+                <label>Content
+                    <input id='AddTaskForm_txtContent' type='text' name='content'/>
+                </label>
+                <button id='btnAddTask_AddTaskForm' class='btn btn-primary'>Add Task</button>
+                <button type='reset' id='btnX_AddTaskForm' class='btn btn-danger'>X</button>
+            </form>
+        </div>
+    </body>
 </html>
