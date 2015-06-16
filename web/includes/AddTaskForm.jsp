@@ -31,7 +31,7 @@
 		}
 	});
 	
-	$("#btnDone_AddTaskForm").click(function () {
+	$("#btnDone_AddTaskForm").click(function (event) {
 		event.preventDefault();
 		
 		var formElements = $("#AddTaskForm").serializeArray(),
