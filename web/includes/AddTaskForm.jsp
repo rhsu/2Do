@@ -1,5 +1,5 @@
 <div id='initialPageState_AddTaskForm'>
-			<button id='btnAddTask_AddTaskInitial' class='btn btn-primary'>Add Task</button>
+	<button id='btnAddTask_AddTaskInitial' class='btn btn-primary'>Add Task</button>
 </div>
 <div id='formPageState_AddTaskForm'>
 	<form id='AddTaskForm' method='post' action='AddTask'>
