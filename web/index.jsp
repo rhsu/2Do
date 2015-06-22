@@ -11,6 +11,7 @@
 		<!--scripts -->
 		<script src="/2Do/js/jquery.js"></script>
 		<script src="/2Do/js/bootstrap.js"></script>
+		<script src="/2Do/js/AddTaskForm.js"></script>
     </head>
     <body>
 		<jsp:include page="/includes/TopNavbar.jsp"/>
@@ -53,7 +54,6 @@
 										</td>
 										<td>${item.getContent()}</td>
 									</tr>
-
 								</c:forEach>
 							</tbody>
 						</table>
