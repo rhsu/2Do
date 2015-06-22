@@ -5,6 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>2Do</title>
+		
+		<link rel="shortcut icon" href="/2Do/images/favicon.ico" />
 		<link rel="stylesheet" href="/2Do/css/bootstrap.css" />
 		<link rel="stylesheet" href="/2Do/css/dashboard.css" />
 		
