@@ -1,55 +1,20 @@
-<!--button class="btn btn-primary" id="btnToggle_AddTaskForm">Create Task</button -->
-
-<form id="AddTaskForm" method="post" action="AddTask"> <!--Action is AddTask -->
-	<label>
-		Name
-		<input type="text" name="name" />
-	</label>						
-	<label>
-		Content
-		<input type="text" name="content"/>
-	</label>
-	<button id="btnDone_AddTaskForm" class="btn btn-primary">Add Task</button>
-</form>
-
-<p id="AddTaskForm_ErrorMessage" class="bg-danger">Please fill out both fields</p>
-
-<script>
-	
-	var state = 'on';
-	
-	$("#AddTaskForm label").hide();
-	$("#AddTaskForm_ErrorMessage").hide();
-	
-	$("#btnDone_AddTaskForm").click(function () {
-
-		if (state === 'on') {
-			$("#AddTaskForm label").show();
-			state = 'off';
-		} else {
-			state = 'on';
-		}
-	});
-	
-	$("#btnDone_AddTaskForm").click(function (event) {
-		event.preventDefault();
-		
-		var formElements = $("#AddTaskForm").serializeArray(),
-			hasErrors = false;
-		
-		for (var i = 0; i < formElements.length; i++) {
-			var elem = formElements[i];
-			if (elem.value === '') {
-				hasErrors = true;
-			}
-		};
-		
-		if (!hasErrors) {
-			$("#AddTaskForm").submit();
-		} else if (state === 'on') {
-			$("#AddTaskForm_ErrorMessage").show();
-		}
-		
-	});
-
-</script>
+<div id='initialPageState_AddTaskForm'>
+	<button id='btnAddTask_AddTaskInitial' class='btn btn-primary'>Add Task</button>
+</div>
+<div id='formPageState_AddTaskForm'>
+	<form id='AddTaskForm' method='post' action='AddTask'>
+		<label>Name
+			<input id='AddTaskForm_txtName' type='text' name='name' />
+		</label>			
+		<label>Content
+			<input id='AddTaskForm_txtContent' type='text' name='content'/>
+		</label>
+		<button id='btnAddTask_AddTaskForm' class='btn btn-success'>
+			<span class='glyphicon glyphicon-ok'></span>
+		</button>
+		<button type='reset' id='btnX_AddTaskForm' class='btn btn-danger'>
+			<span class='glyphicon glyphicon-remove'></span>
+		</button>
+	</form>
+	<p id="AddTaskForm_ErrorMessage" class="bg-danger"></p>
+</div>
