@@ -23,7 +23,7 @@ $(document).ready(function () {
             console.log(state);
             throw 'Invalid state' + state;
         }
-    }
+    };
         
     // error checking
     var errorChecking = function () {
@@ -48,7 +48,7 @@ $(document).ready(function () {
             $('#AddTaskForm_ErrorMessage').show();
             $('#AddTaskForm_ErrorMessage').html(addTaskFormErrorMessage);
         }
-    }
+    };
     
     // main
     display();
