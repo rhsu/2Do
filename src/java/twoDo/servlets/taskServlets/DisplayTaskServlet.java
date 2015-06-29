@@ -21,7 +21,7 @@ public class DisplayTaskServlet extends HttpServlet
 		TaskTempProvider provider = new TaskTempProvider();
 		int userId = -1;
 		List<TaskTemp> tasks = provider.getTasks(userId);
-		
+				
 		request.setAttribute("tasks", tasks);
 	}
 
