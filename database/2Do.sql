@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.41, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: 2Do
 -- ------------------------------------------------------
--- Server version	5.5.41-0ubuntu0.14.04.1
+-- Server version	5.5.43-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `Task`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Task` (
   `TaskId` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(16) DEFAULT NULL,
+  `Name` varchar(16) NOT NULL,
   `Content` varchar(128) DEFAULT NULL,
   `IsCompleted` bit(1) NOT NULL DEFAULT b'0',
   `IsDeleted` bit(1) NOT NULL DEFAULT b'0',
   `CreationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `ModifiedDate` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`TaskId`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -58,8 +58,8 @@ INSERT INTO `Task`
 )
 VALUES
 (
-	`pTaskContent`
-	,`pTaskName`
+	`pTaskName`
+	,`pTaskContent`
 ) ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -102,4 +102,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-16 19:59:36
+-- Dump completed on 2015-07-03 15:25:33

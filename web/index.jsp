@@ -43,7 +43,7 @@
 								<tr>
 									<th>#</th>
 									<th><input type="checkbox" /> Name</th>
-									<th>Description</th>
+									<th>Content</th>
 								</tr>
 							</thead>
 							<tbody>
