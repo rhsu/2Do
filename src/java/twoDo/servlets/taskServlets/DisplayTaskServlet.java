@@ -6,8 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import twoDo.models.TaskTemp;
-import twoDo.providers.TaskTempProvider;
+import twoDo.models.Task;
+import twoDo.services.UserTaskService;
 
 /**
  *
@@ -18,9 +18,9 @@ public class DisplayTaskServlet extends HttpServlet
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		TaskTempProvider provider = new TaskTempProvider();
+		UserTaskService service = new UserTaskService();
 		int userId = -1;
-		List<TaskTemp> tasks = provider.getTasks(userId);
+		List<Task> tasks = service.getTasks(userId);
 				
 		request.setAttribute("tasks", tasks);
 	}

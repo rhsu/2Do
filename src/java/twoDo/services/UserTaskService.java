@@ -1,4 +1,4 @@
-package twoDo.providers;
+package twoDo.services;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -9,23 +9,23 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import twDo.dataLayer.DataLayer;
-import twoDo.models.TaskTemp;
-import twoDo.models.TaskTempBuilder;
+import twoDo.models.Task;
+import twoDo.models.UserTask;
 
-public class TaskTempProvider 
+public class UserTaskService 
 {
 	private final DataLayer dataLayer;
-	private Connection connection = null;
-	private CallableStatement statement = null;
-	private ResultSet rs = null;
 	
-	public TaskTempProvider()
+	public UserTaskService()
 	{
 		dataLayer = new DataLayer();
 	}
 	
-	public void insertTask(TaskTemp task) 
+	public void insertTask(Task task) 
 	{	
+		Connection connection = null;
+		CallableStatement statement = null;
+		
 		try
 		{
 			connection = dataLayer.getConnection();
@@ -37,16 +37,20 @@ public class TaskTempProvider
 		}
 		catch(SQLException ex)
 		{
-			Logger.getLogger(TaskTempProvider.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
-			CloseConnections();
+			closeConnections(connection, statement, null);
 		}
 	}
 	
-	public void updateTask(TaskTemp task)
+	public void updateTask(UserTask task)
 	{
+		Connection connection = null;
+		CallableStatement statement = null;
+		ResultSet rs = null;
+		
 		try
 		{
 			connection = dataLayer.getConnection();
@@ -61,17 +65,20 @@ public class TaskTempProvider
 		}
 		catch (SQLException ex)
 		{
-			Logger.getLogger(TaskTempProvider.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
-			CloseConnections();
+			closeConnections(connection, statement, rs);
 		}
 	}
 
-	public List<TaskTemp> getTasks(int userId) 
+	public List<Task> getTasks(int userId) 
 	{
-		List<TaskTemp> tasks = new ArrayList<>();
+		List<Task> tasks = new ArrayList<>();
+		Connection connection = null;
+		CallableStatement statement = null;
+		ResultSet rs = null;
 		
 		try 
 		{			
@@ -85,32 +92,42 @@ public class TaskTempProvider
 			{
 				String name = rs.getString("Name");
 				String content = rs.getString("Content");
-				TaskTemp task = new TaskTempBuilder()
-					.setUserId(userId)
-					.setName(name)
-					.setContent(content)
-					.buildTaskTemp();
-				
+				Boolean isDeleted = rs.getBoolean("IsDeleted");
+				Boolean isCompleted = rs.getBoolean("IsCompleted");
+				Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+
 				tasks.add(task);
 			}
 		} 
 		catch (SQLException ex) 
 		{
-			Logger.getLogger(TaskTempProvider.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
-			CloseConnections();
+			closeConnections(connection, statement, rs);
 		}
 		
 		
 		return tasks;
 	}
 	
-	private void CloseConnections()
+	void createTaskFromReader(ResultSet rs)
 	{
-		try { connection.close(); } catch (Exception e) { }
-		try { statement.close();  } catch (Exception e) { }
-		try { rs.close();		  } catch (Exception e) { }
+		
+	}
+	
+	void closeConnections(Connection connection, 
+			CallableStatement statement,
+			ResultSet rs)
+	{
+		if (connection != null)
+			try { connection.close(); } catch (Exception e) { }
+		
+		if (statement != null)
+			try { statement.close();  } catch (Exception e) { }
+		
+		if (rs != null)
+			try { rs.close();		  } catch (Exception e) { }
 	}
 }
