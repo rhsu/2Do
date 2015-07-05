@@ -12,7 +12,7 @@ import twDo.dataLayer.DataLayer;
 import twoDo.models.Task;
 import twoDo.models.UserTask;
 
-public class UserTaskService 
+public class UserTaskService implements TaskService
 {
 	private final DataLayer dataLayer;
 	
@@ -21,6 +21,7 @@ public class UserTaskService
 		dataLayer = new DataLayer();
 	}
 	
+	@Override
 	public void insertTask(Task task) 
 	{	
 		Connection connection = null;
@@ -45,6 +46,7 @@ public class UserTaskService
 		}
 	}
 	
+	@Override
 	public void updateTask(UserTask task)
 	{
 		Connection connection = null;
@@ -73,6 +75,7 @@ public class UserTaskService
 		}
 	}
 
+	@Override
 	public List<Task> getTasks(int userId) 
 	{
 		List<Task> tasks = new ArrayList<>();
@@ -129,5 +132,11 @@ public class UserTaskService
 		
 		if (rs != null)
 			try { rs.close();		  } catch (Exception e) { }
+	}
+
+	@Override
+	public void deleteTask(int taskId) 
+	{
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }
