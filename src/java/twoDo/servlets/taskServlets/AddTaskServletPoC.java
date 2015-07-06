@@ -6,9 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import twoDo.models.TaskTemp;
-import twoDo.models.TaskTempBuilder;
-import twoDo.providers.TaskTempProvider;
+import twoDo.models.Task;
+import twoDo.models.UserTask;
+import twoDo.services.UserTaskService;
 
 public class AddTaskServletPoC extends HttpServlet 
 {
@@ -32,16 +32,14 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		TaskTempProvider provider = new TaskTempProvider();
+		UserTaskService provider = new UserTaskService();
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
+		boolean isDeleted = false;
+		boolean isCompleted = false;
 		int userId = -1;
 		
-		TaskTemp task = new TaskTempBuilder()
-			.setUserId(userId)
-			.setContent(content)
-			.setName(name)
-			.buildTaskTemp();
+		Task task = new UserTask(userId, content, name, isDeleted, isCompleted);
 		
 		provider.insertTask(task);
 		processRequest(request, response);
