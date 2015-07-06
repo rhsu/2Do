@@ -32,16 +32,16 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		UserTaskService provider = new UserTaskService();
+		UserTaskService service = new UserTaskService();
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
 		boolean isDeleted = false;
 		boolean isCompleted = false;
 		int userId = -1;
 		
-		Task task = new UserTask(userId, content, name, isDeleted, isCompleted);
+		Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
 		
-		provider.insertTask(task);
+		service.insertTask(task);
 		processRequest(request, response);
 	}
 }
