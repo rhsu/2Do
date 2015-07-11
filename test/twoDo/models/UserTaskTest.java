@@ -10,15 +10,21 @@ public class UserTaskTest extends TwoDoTestCase
 	private static final boolean IS_DELETED = false;
 	private static final boolean IS_COMPLETED = false;
 	
+	protected Task userTask;
+	
 	public UserTaskTest(String method)
 	{
 		super(method);
 	}
 	
-	public void testGetName()
+	@Override
+	public void setUp()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
+		userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
+	}
+	
+	public void testGetName()
+	{	
 		String expected = NAME;
 		String actual = userTask.getName();
 		
@@ -27,8 +33,6 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testGetContent()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
 		String expected = CONTENT;
 		String actual = userTask.getContent();
 		
@@ -37,8 +41,6 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testGetUserId()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
 		int expected = USERID;
 		int actual = userTask.getUserId();
 		
@@ -47,8 +49,6 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testGetIsDeleted()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
 		boolean expected = IS_DELETED;
 		boolean actual = userTask.isDeleted();
 		
@@ -57,8 +57,6 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testGetIsCompleted()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
 		boolean expected = IS_COMPLETED;
 		boolean actual = userTask.isCompleted();
 		
@@ -67,17 +65,13 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testSetIsDeleted()
 	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
 		userTask.setDeleted(true);
 		
 		assertTrue(userTask.isDeleted());
 	}
 	
 	public void testSetIsCompleted()
-	{
-		Task userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
-		
+	{	
 		userTask.setCompleted(true);
 		
 		assertTrue(userTask.isCompleted());

@@ -115,12 +115,18 @@ public class UserTaskService implements TaskService
 		return tasks;
 	}
 	
+	@Override
+	public void deleteTask(int taskId) 
+	{
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
+	
 	void createTaskFromReader(ResultSet rs)
 	{
 		
 	}
 	
-	void closeConnections(Connection connection, 
+	private void closeConnections(Connection connection, 
 			CallableStatement statement,
 			ResultSet rs)
 	{
@@ -132,11 +138,5 @@ public class UserTaskService implements TaskService
 		
 		if (rs != null)
 			try { rs.close();		  } catch (Exception e) { }
-	}
-
-	@Override
-	public void deleteTask(int taskId) 
-	{
-		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }
