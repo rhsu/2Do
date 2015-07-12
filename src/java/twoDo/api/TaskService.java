@@ -7,7 +7,7 @@ public interface TaskService
 {
 	public void insertTask(Task task);
 	
-	public void updateTask(UserTask task);
+	public void updateTask(Task task);
 	
 	public List<Task> getTasks(int userId);
 	

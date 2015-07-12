@@ -7,22 +7,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import twoDo.dataLayer.DataLayer;
 import twoDo.api.Task;
 import twoDo.api.factories.TaskFactory;
-import twoDo.models.UserTask;
 
 public class UserTaskService implements TaskService
 {
 	private final DataLayer dataLayer;
-	private final TaskFactory userFactory;
+	private final TaskFactory taskFactory;
 	
-	public UserTaskService(TaskFactory userFactory)
+	public UserTaskService(TaskFactory taskFactory)
 	{
 		dataLayer = new DataLayer();
-		this.userFactory = userFactory;
+		this.taskFactory = taskFactory;
 	}
 	
 	@Override
@@ -42,7 +39,7 @@ public class UserTaskService implements TaskService
 		}
 		catch(SQLException ex)
 		{
-			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
+			// Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
@@ -51,7 +48,7 @@ public class UserTaskService implements TaskService
 	}
 	
 	@Override
-	public void updateTask(UserTask task)
+	public void updateTask(Task task)
 	{
 		Connection connection = null;
 		CallableStatement statement = null;
@@ -71,7 +68,7 @@ public class UserTaskService implements TaskService
 		}
 		catch (SQLException ex)
 		{
-			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
+			// Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
@@ -104,7 +101,7 @@ public class UserTaskService implements TaskService
 		} 
 		catch (SQLException ex) 
 		{
-			Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
+			// Logger.getLogger(UserTaskService.class.getName()).log(Level.SEVERE, null, ex);
 		}
 		finally
 		{
@@ -127,7 +124,9 @@ public class UserTaskService implements TaskService
 		String content = rs.getString("Content");
 		Boolean isDeleted = rs.getBoolean("IsDeleted");
 		Boolean isCompleted = rs.getBoolean("IsCompleted");
-		Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+		
+		Task task = this.taskFactory.createTask(userId, name, content, isDeleted, isCompleted);
+		
 		return task;
 	}
 	
