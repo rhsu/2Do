@@ -6,8 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twoDo.ApplicationWrapper;
 import twoDo.api.Task;
-import twoDo.services.UserTaskService;
+import twoDo.api.TaskService;
 
 /**
  *
@@ -18,7 +19,8 @@ public class DisplayTaskServlet extends HttpServlet
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		UserTaskService service = new UserTaskService();
+		TaskService service = ApplicationWrapper.GetUserTaskService();
+		
 		int userId = -1;
 		List<Task> tasks = service.getTasks(userId);
 				

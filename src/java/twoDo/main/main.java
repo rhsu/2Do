@@ -1,4 +1,4 @@
-package twoDo.test;
+package twoDo.main;
 
 public class main 
 {

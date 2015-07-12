@@ -4,13 +4,7 @@ import twoDo.api.Task;
 import twoDo.TwoDoTestCase;
 
 public class UserTaskTest extends TwoDoTestCase
-{
-	private static final String NAME = "My Task";
-	private static final String CONTENT = "This is the content of my task";
-	private static final int USERID = 1;
-	private static final boolean IS_DELETED = false;
-	private static final boolean IS_COMPLETED = false;
-	
+{	
 	protected Task userTask;
 	
 	public UserTaskTest(String method)
@@ -21,7 +15,7 @@ public class UserTaskTest extends TwoDoTestCase
 	@Override
 	public void setUp()
 	{
-		userTask = new UserTask(USERID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
+		userTask = new UserTask(USER_ID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
 	}
 	
 	public void testGetName()
@@ -42,7 +36,7 @@ public class UserTaskTest extends TwoDoTestCase
 	
 	public void testGetUserId()
 	{
-		int expected = USERID;
+		int expected = USER_ID;
 		int actual = userTask.getUserId();
 		
 		assertEquals(expected, actual);
