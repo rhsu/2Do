@@ -1,5 +1,6 @@
 package twoDo.services;
 
+import twoDo.ApplicationWrapper;
 import twoDo.api.TaskService;
 import twoDo.TwoDoTestCase;
 
@@ -15,7 +16,8 @@ public class UserTaskServiceTest extends TwoDoTestCase
 	@Override
 	public void setUp()
 	{
-		service = new UserTaskService();
+		service = new UserTaskService(
+			ApplicationWrapper.GetUserTaskService());
 	}
 	
 	public void testInsertTask()

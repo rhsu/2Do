@@ -11,15 +11,18 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import twoDo.dataLayer.DataLayer;
 import twoDo.api.Task;
+import twoDo.api.factories.TaskFactory;
 import twoDo.models.UserTask;
 
 public class UserTaskService implements TaskService
 {
 	private final DataLayer dataLayer;
+	private final TaskFactory userFactory;
 	
-	public UserTaskService()
+	public UserTaskService(TaskFactory userFactory)
 	{
 		dataLayer = new DataLayer();
+		this.userFactory = userFactory;
 	}
 	
 	@Override

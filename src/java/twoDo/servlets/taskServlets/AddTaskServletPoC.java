@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import twoDo.ApplicationWrapper;
 import twoDo.api.Task;
 import twoDo.models.UserTask;
 import twoDo.services.UserTaskService;
@@ -32,7 +33,9 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		UserTaskService service = new UserTaskService();
+		UserTaskService service = new UserTaskService(
+			ApplicationWrapper.GetUserTaskService());
+		
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
 		boolean isDeleted = false;
