@@ -4,6 +4,11 @@ import twoDo.models.Task;
 
 public class UserTaskStub implements Task
 {
+	public UserTaskStub() throws Exception
+	{
+		throw new Exception("Why am I using this?");
+	}
+	
 	@Override
 	public String getName() 
 	{
