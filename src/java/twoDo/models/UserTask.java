@@ -4,9 +4,9 @@ import twoDo.api.Task;
 
 public class UserTask implements Task
 {
+	private final int userId;
 	private final String name;
 	private final String content;
-	private final int userId;
 	private boolean isDeleted;
 	private boolean isCompleted;
 	
