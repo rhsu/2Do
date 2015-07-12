@@ -17,7 +17,7 @@ public class UserTaskServiceTest extends TwoDoTestCase
 	public void setUp()
 	{
 		service = new UserTaskService(
-			ApplicationWrapper.GetUserTaskService());
+			ApplicationWrapper.GetUserTaskFactory());
 	}
 	
 	public void testInsertTask()

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import twoDo.ApplicationWrapper;
 import twoDo.api.Task;
-import twoDo.models.UserTask;
-import twoDo.services.UserTaskService;
+import twoDo.api.TaskService;
+import twoDo.api.factories.TaskFactory;
 
 public class AddTaskServletPoC extends HttpServlet 
 {
@@ -33,8 +33,7 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		UserTaskService service = new UserTaskService(
-			ApplicationWrapper.GetUserTaskService());
+		TaskService service = ApplicationWrapper.GetUserTaskService();
 		
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
@@ -42,7 +41,9 @@ public class AddTaskServletPoC extends HttpServlet
 		boolean isCompleted = false;
 		int userId = -1;
 		
-		Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+		TaskFactory taskFactory = ApplicationWrapper.GetUserTaskFactory();
+		
+		Task task = taskFactory.createTask(userId, name, content, isDeleted, isCompleted);
 		
 		service.insertTask(task);
 		processRequest(request, response);
