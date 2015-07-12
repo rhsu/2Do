@@ -1,6 +1,6 @@
 package twoDo.stubs;
 
-import twoDo.models.Task;
+import twoDo.api.Task;
 
 public class UserTaskStub implements Task
 {

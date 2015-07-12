@@ -1,5 +1,6 @@
 package twoDo.services;
 
+import twoDo.api.TaskService;
 import twoDo.TwoDoTestCase;
 
 public class UserTaskServiceTest extends TwoDoTestCase

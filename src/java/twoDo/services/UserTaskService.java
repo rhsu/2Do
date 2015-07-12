@@ -1,5 +1,6 @@
 package twoDo.services;
 
+import twoDo.api.TaskService;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import twoDo.dataLayer.DataLayer;
-import twoDo.models.Task;
+import twoDo.api.Task;
 import twoDo.models.UserTask;
 
 public class UserTaskService implements TaskService
