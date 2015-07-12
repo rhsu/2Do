@@ -1,4 +1,4 @@
-package twDo.dataLayer;
+package twoDo.dataLayer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

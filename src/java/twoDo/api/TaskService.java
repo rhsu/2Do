@@ -1,7 +1,6 @@
-package twoDo.services;
+package twoDo.api;
 
 import java.util.List;
-import twoDo.models.Task;
 import twoDo.models.UserTask;
 
 public interface TaskService 

@@ -1,5 +1,6 @@
 package twoDo.services;
 
+import twoDo.api.TaskService;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import twDo.dataLayer.DataLayer;
-import twoDo.models.Task;
+import twoDo.dataLayer.DataLayer;
+import twoDo.api.Task;
 import twoDo.models.UserTask;
 
 public class UserTaskService implements TaskService
@@ -93,11 +94,7 @@ public class UserTaskService implements TaskService
 			
 			while (rs.next())
 			{
-				String name = rs.getString("Name");
-				String content = rs.getString("Content");
-				Boolean isDeleted = rs.getBoolean("IsDeleted");
-				Boolean isCompleted = rs.getBoolean("IsCompleted");
-				Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+				Task task = this.createTaskFromReader(rs, userId);
 
 				tasks.add(task);
 			}
@@ -115,12 +112,23 @@ public class UserTaskService implements TaskService
 		return tasks;
 	}
 	
-	void createTaskFromReader(ResultSet rs)
+	@Override
+	public void deleteTask(int taskId) 
 	{
-		
+		throw new UnsupportedOperationException("Not supported yet.");
 	}
 	
-	void closeConnections(Connection connection, 
+	Task createTaskFromReader(ResultSet rs, int userId) throws SQLException
+	{
+		String name = rs.getString("Name");
+		String content = rs.getString("Content");
+		Boolean isDeleted = rs.getBoolean("IsDeleted");
+		Boolean isCompleted = rs.getBoolean("IsCompleted");
+		Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+		return task;
+	}
+	
+	private void closeConnections(Connection connection, 
 			CallableStatement statement,
 			ResultSet rs)
 	{
@@ -132,11 +140,5 @@ public class UserTaskService implements TaskService
 		
 		if (rs != null)
 			try { rs.close();		  } catch (Exception e) { }
-	}
-
-	@Override
-	public void deleteTask(int taskId) 
-	{
-		throw new UnsupportedOperationException("Not supported yet.");
 	}
 }

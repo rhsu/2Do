@@ -1,4 +1,4 @@
-package twoDo.models;
+package twoDo.api;
 
 public interface Task 
 {

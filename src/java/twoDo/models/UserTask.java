@@ -1,5 +1,7 @@
 package twoDo.models;
 
+import twoDo.api.Task;
+
 public class UserTask implements Task
 {
 	private final String name;
