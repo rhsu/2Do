@@ -94,11 +94,7 @@ public class UserTaskService implements TaskService
 			
 			while (rs.next())
 			{
-				String name = rs.getString("Name");
-				String content = rs.getString("Content");
-				Boolean isDeleted = rs.getBoolean("IsDeleted");
-				Boolean isCompleted = rs.getBoolean("IsCompleted");
-				Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+				Task task = this.createTaskFromReader(rs, userId);
 
 				tasks.add(task);
 			}
@@ -122,9 +118,14 @@ public class UserTaskService implements TaskService
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 	
-	void createTaskFromReader(ResultSet rs)
+	Task createTaskFromReader(ResultSet rs, int userId) throws SQLException
 	{
-		
+		String name = rs.getString("Name");
+		String content = rs.getString("Content");
+		Boolean isDeleted = rs.getBoolean("IsDeleted");
+		Boolean isCompleted = rs.getBoolean("IsCompleted");
+		Task task = new UserTask(userId, name, content, isDeleted, isCompleted);
+		return task;
 	}
 	
 	private void closeConnections(Connection connection, 
