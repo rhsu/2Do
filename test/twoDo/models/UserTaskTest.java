@@ -15,7 +15,7 @@ public class UserTaskTest extends TwoDoTestCase
 	@Override
 	public void setUp()
 	{
-		userTask = new UserTask(USER_ID, NAME, CONTENT, IS_DELETED, IS_COMPLETED);
+		userTask = new UserTask(NAME, CONTENT, IS_DELETED, IS_COMPLETED);
 	}
 	
 	public void testGetName()
@@ -30,14 +30,6 @@ public class UserTaskTest extends TwoDoTestCase
 	{
 		String expected = CONTENT;
 		String actual = userTask.getContent();
-		
-		assertEquals(expected, actual);
-	}
-	
-	public void testGetUserId()
-	{
-		int expected = USER_ID;
-		int actual = userTask.getUserId();
 		
 		assertEquals(expected, actual);
 	}

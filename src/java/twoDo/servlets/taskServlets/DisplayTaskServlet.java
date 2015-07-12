@@ -22,7 +22,7 @@ public class DisplayTaskServlet extends HttpServlet
 		TaskService service = ApplicationWrapper.GetUserTaskService();
 		
 		int userId = -1;
-		List<Task> tasks = service.getTasks(userId);
+		List<Task> tasks = service.getTasks();
 				
 		request.setAttribute("tasks", tasks);
 	}

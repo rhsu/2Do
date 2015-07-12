@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import twoDo.ApplicationContext;
+import twoDo.ApplicationWrapper;
 import twoDo.dataLayer.DataLayer;
 import twoDo.api.Task;
 import twoDo.api.factories.TaskFactory;
@@ -15,11 +17,14 @@ public class UserTaskService implements TaskService
 {
 	private final DataLayer dataLayer;
 	private final TaskFactory taskFactory;
+	private final ApplicationContext appContext;
 	
-	public UserTaskService(TaskFactory taskFactory)
+	public UserTaskService(TaskFactory taskFactory,
+		ApplicationContext appContext)
 	{
 		dataLayer = new DataLayer();
 		this.taskFactory = taskFactory;
+		this.appContext = appContext;
 	}
 	
 	@Override
@@ -77,14 +82,16 @@ public class UserTaskService implements TaskService
 	}
 
 	@Override
-	public List<Task> getTasks(int userId) 
+	public List<Task> getTasks() 
 	{
 		List<Task> tasks = new ArrayList<>();
 		Connection connection = null;
 		CallableStatement statement = null;
 		ResultSet rs = null;
 		
-		try 
+		int userId = this.appContext.getUserId();
+		
+		try
 		{			
 			connection = dataLayer.getConnection();
 			statement = connection.prepareCall("{call Task_Select() }");
@@ -125,7 +132,7 @@ public class UserTaskService implements TaskService
 		Boolean isDeleted = rs.getBoolean("IsDeleted");
 		Boolean isCompleted = rs.getBoolean("IsCompleted");
 		
-		Task task = this.taskFactory.createTask(userId, name, content, isDeleted, isCompleted);
+		Task task = this.taskFactory.createTask(name, content, isDeleted, isCompleted);
 		
 		return task;
 	}
