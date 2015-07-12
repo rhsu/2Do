@@ -14,11 +14,17 @@ public class ApplicationWrapper
 	public static TaskService GetUserTaskService()
 	{	
 		return new UserTaskService(
-			GetUserTaskFactory());
+			GetUserTaskFactory(),
+			GetAppContext());
 	}
 	
 	public static TaskFactory GetUserTaskFactory()
 	{
 		return new UserTaskFactory();
+	}
+	
+	public static ApplicationContext GetAppContext()
+	{
+		return new ApplicationContext();
 	}
 }

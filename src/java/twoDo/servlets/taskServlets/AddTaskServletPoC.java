@@ -43,7 +43,7 @@ public class AddTaskServletPoC extends HttpServlet
 		
 		TaskFactory taskFactory = ApplicationWrapper.GetUserTaskFactory();
 		
-		Task task = taskFactory.createTask(userId, name, content, isDeleted, isCompleted);
+		Task task = taskFactory.createTask(name, content, isDeleted, isCompleted);
 		
 		service.insertTask(task);
 		processRequest(request, response);

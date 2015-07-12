@@ -22,17 +22,15 @@ public class UserTaskFactoryTest extends TwoDoTestCase
 	
 	public void testCreateTask()
 	{
-		Task expected = new UserTask(USER_ID, 
-			NAME, 
+		Task expected = new UserTask(NAME, 
 			CONTENT, 
 			IS_DELETED, 
 			IS_COMPLETED);
 		
-		Task actual = factory.createTask(USER_ID, 
-				NAME, 
-				CONTENT, 
-				IS_DELETED, 
-				IS_COMPLETED);
+		Task actual = factory.createTask(NAME, 
+			CONTENT, 
+			IS_DELETED, 
+			IS_COMPLETED);
 		
 		assertEqualTask(expected, actual);
 	}

@@ -23,7 +23,6 @@ public abstract class TwoDoTestCase extends TestCase
 	
 	public static void assertEqualTask(String message, Task actual, Task expected)
 	{
-		assertEquals(message, actual.getUserId(), expected.getUserId());
 		assertEquals(message, actual.getName(), expected.getName());
 		assertEquals(message, actual.getContent(), expected.getContent());
 		assertEquals(message, actual.isDeleted(), expected.isDeleted());
