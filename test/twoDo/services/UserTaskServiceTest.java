@@ -16,7 +16,8 @@ public class UserTaskServiceTest extends TwoDoTestCase
 	@Override
 	public void setUp()
 	{
-		service = ApplicationWrapper.GetUserTaskService();
+		service = ApplicationWrapper.GetUserTaskServiceFactory()
+				.createTaskService();
 	}
 	
 	public void testInsertTask()

@@ -1,9 +1,6 @@
 package twoDo;
 
-import twoDo.api.TaskService;
-import twoDo.api.factories.TaskFactory;
-import twoDo.factories.UserTaskFactory;
-import twoDo.services.UserTaskService;
+import twoDo.api.factories.*;
 
 /**
  * Static methods that the entire application needs
@@ -11,11 +8,11 @@ import twoDo.services.UserTaskService;
  */
 public class ApplicationWrapper 
 {
-	public static TaskService GetUserTaskService()
-	{	
-		return new UserTaskService(
-			GetUserTaskFactory(),
-			GetAppContext());
+	//<editor-fold defaultstate="collapsed" desc="Factories"> 
+	
+	public static ApplicationContextFactory GetAppContextFactory()
+	{
+		return new ApplicationContextFactory();
 	}
 	
 	public static TaskFactory GetUserTaskFactory()
@@ -23,8 +20,15 @@ public class ApplicationWrapper
 		return new UserTaskFactory();
 	}
 	
-	public static ApplicationContext GetAppContext()
+	public static TaskServiceFactory GetUserTaskServiceFactory()
 	{
-		return new ApplicationContext();
+		return new UserTaskServiceFactory();
 	}
+	
+	public static SQLDataConfigurationFactory GetSQLDataConfigurationFactory()
+	{
+		return new TaskSQLDataConfigurationFactory();
+	}
+	
+	//</editor-fold>
 }

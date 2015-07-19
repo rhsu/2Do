@@ -33,13 +33,14 @@ public class AddTaskServletPoC extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		TaskService service = ApplicationWrapper.GetUserTaskService();
+		TaskService service = ApplicationWrapper
+				.GetUserTaskServiceFactory()
+				.createTaskService();
 		
 		String name = request.getParameter("name");
 		String content = request.getParameter("content");
 		boolean isDeleted = false;
 		boolean isCompleted = false;
-		int userId = -1;
 		
 		TaskFactory taskFactory = ApplicationWrapper.GetUserTaskFactory();
 		
