@@ -2,7 +2,7 @@ package twoDo;
 
 public class ApplicationContextFactory 
 {
-	public ApplicationContext makeApplicationContext()
+	public ApplicationContext createApplicationContext()
 	{
 		return new ApplicationContext();
 	}

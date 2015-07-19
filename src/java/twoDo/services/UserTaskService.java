@@ -84,7 +84,7 @@ public class UserTaskService implements TaskService
 	@Override
 	public List<Task> getTasks() 
 	{
-		ApplicationContext appContext = this.appContextFactory.makeApplicationContext();
+		ApplicationContext appContext = this.appContextFactory.createApplicationContext();
 		
 		List<Task> tasks = new ArrayList<>();
 		Connection connection = null;
