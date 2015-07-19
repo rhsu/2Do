@@ -45,7 +45,7 @@ public class TaskSQLDataConfiguration implements SQLDataConfiguration
 	private String createConnectionStringFromFields(String url, 
 			int portNumber, String databaseName)
 	{
-		String connString = url + portNumber 
+		String connString = url + ":" + portNumber 
 				+ "/" + databaseName;
 		
 		return connString;
@@ -64,7 +64,7 @@ public class TaskSQLDataConfiguration implements SQLDataConfiguration
 		}
 		catch (ClassNotFoundException | SQLException ex) 
 		{
-			Logger.getLogger(DataLayer.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(TaskSQLDataConfiguration.class.getName()).log(Level.SEVERE, null, ex);
 			return null;
 		}
 	}

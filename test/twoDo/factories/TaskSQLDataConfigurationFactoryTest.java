@@ -16,7 +16,7 @@ public class TaskSQLDataConfigurationFactoryTest extends TwoDoTestCase
 	
 	private static final int PORT_NUMBER = 3306;
 	private static final String DATABASE_NAME = "2Do";
-	private static final String URL = "jdbc:mysql://localhost:3306";
+	private static final String URL = "jdbc:mysql://localhost";
 	
 	public TaskSQLDataConfigurationFactoryTest(String method) 
 	{
