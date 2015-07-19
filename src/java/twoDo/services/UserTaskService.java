@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import twoDo.ApplicationContext;
-import twoDo.ApplicationWrapper;
+import twoDo.ApplicationContextFactory;
 import twoDo.dataLayer.DataLayer;
 import twoDo.api.Task;
 import twoDo.api.factories.TaskFactory;
@@ -17,14 +17,14 @@ public class UserTaskService implements TaskService
 {
 	private final DataLayer dataLayer;
 	private final TaskFactory taskFactory;
-	private final ApplicationContext appContext;
+	private final ApplicationContextFactory appContextFactory;
 	
 	public UserTaskService(TaskFactory taskFactory,
-		ApplicationContext appContext)
+		ApplicationContextFactory appContextFactory)
 	{
 		dataLayer = new DataLayer();
 		this.taskFactory = taskFactory;
-		this.appContext = appContext;
+		this.appContextFactory = appContextFactory;
 	}
 	
 	@Override
@@ -84,12 +84,14 @@ public class UserTaskService implements TaskService
 	@Override
 	public List<Task> getTasks() 
 	{
+		ApplicationContext appContext = this.appContextFactory.makeApplicationContext();
+		
 		List<Task> tasks = new ArrayList<>();
 		Connection connection = null;
 		CallableStatement statement = null;
 		ResultSet rs = null;
 		
-		int userId = this.appContext.getUserId();
+		int userId = appContext.getUserId();
 		
 		try
 		{			

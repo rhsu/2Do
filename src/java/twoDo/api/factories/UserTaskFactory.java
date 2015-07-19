@@ -1,7 +1,6 @@
-package twoDo.factories;
+package twoDo.api.factories;
 
 import twoDo.api.Task;
-import twoDo.api.factories.TaskFactory;
 import twoDo.models.UserTask;
 
 public class UserTaskFactory implements TaskFactory

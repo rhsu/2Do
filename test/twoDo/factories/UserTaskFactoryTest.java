@@ -1,5 +1,6 @@
 package twoDo.factories;
 
+import twoDo.api.factories.UserTaskFactory;
 import twoDo.TwoDoTestCase;
 import twoDo.api.Task;
 import twoDo.api.factories.TaskFactory;

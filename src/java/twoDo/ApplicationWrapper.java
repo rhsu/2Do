@@ -2,7 +2,7 @@ package twoDo;
 
 import twoDo.api.TaskService;
 import twoDo.api.factories.TaskFactory;
-import twoDo.factories.UserTaskFactory;
+import twoDo.api.factories.UserTaskFactory;
 import twoDo.services.UserTaskService;
 
 /**
@@ -15,7 +15,7 @@ public class ApplicationWrapper
 	{	
 		return new UserTaskService(
 			GetUserTaskFactory(),
-			GetAppContext());
+			GetAppContextFactory());
 	}
 	
 	public static TaskFactory GetUserTaskFactory()
@@ -23,8 +23,8 @@ public class ApplicationWrapper
 		return new UserTaskFactory();
 	}
 	
-	public static ApplicationContext GetAppContext()
+	public static ApplicationContextFactory GetAppContextFactory()
 	{
-		return new ApplicationContext();
+		return new ApplicationContextFactory();
 	}
 }
