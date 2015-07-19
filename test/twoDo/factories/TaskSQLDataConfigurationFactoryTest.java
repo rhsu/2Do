@@ -38,7 +38,7 @@ public class TaskSQLDataConfigurationFactoryTest extends TwoDoTestCase
 	{
 		SQLDataConfiguration config = factory.createSQLDataConfiguration();
 		
-		Connection connection = config.GetSqlConnection();
+		Connection connection = config.CreateSqlConnection();
 		assertNotNull(connection);
 	}
 	
@@ -57,7 +57,7 @@ public class TaskSQLDataConfigurationFactoryTest extends TwoDoTestCase
 			PORT_NUMBER,
 			DATABASE_NAME);
 		
-		Connection connection = config.GetSqlConnection();
+		Connection connection = config.CreateSqlConnection();
 		assertNotNull(connection);
 	}
 	
@@ -70,7 +70,7 @@ public class TaskSQLDataConfigurationFactoryTest extends TwoDoTestCase
 	{
 		SQLDataConfiguration config = factory.createSQLDataConfiguration(USERNAME, PASSWORD, CONNECTION_STRING);
 		
-		Connection connection = config.GetSqlConnection();
+		Connection connection = config.CreateSqlConnection();
 		assertNotNull(connection);
 	}
 	

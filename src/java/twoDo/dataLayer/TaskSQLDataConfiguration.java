@@ -52,7 +52,7 @@ public class TaskSQLDataConfiguration implements SQLDataConfiguration
 	}
 	
 	@Override
-	public Connection GetSqlConnection() 
+	public Connection CreateSqlConnection() 
 	{
 		try 
 		{

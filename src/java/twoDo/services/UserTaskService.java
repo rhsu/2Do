@@ -38,7 +38,7 @@ public class UserTaskService implements TaskService
 		
 		try
 		{
-			connection = config.GetSqlConnection();
+			connection = config.CreateSqlConnection();
 			statement = connection.prepareCall("{call Task_Create(?, ?)}");
 			statement.setString("pTaskName", task.getName());
 			statement.setString("pTaskContent", task.getContent());
@@ -66,7 +66,7 @@ public class UserTaskService implements TaskService
 		
 		try
 		{
-			connection = config.GetSqlConnection();
+			connection = config.CreateSqlConnection();
 			statement = connection.prepareCall("{ call Task_Update(?, ?) }");
 			statement.setString("pContent", task.getContent());
 			statement.setString("pName", task.getName());
@@ -102,7 +102,7 @@ public class UserTaskService implements TaskService
 		
 		try
 		{			
-			connection = config.GetSqlConnection();
+			connection = config.CreateSqlConnection();
 			statement = connection.prepareCall("{call Task_Select() }");
 			// statement.setInt("pUserId", userId);
 			
