@@ -11,4 +11,22 @@ public class TaskSQLDataConfigurationFactory
 	{
 		return new TaskSQLDataConfiguration();
 	}
+
+	@Override
+	public SQLDataConfiguration createSQLDataConfiguration(String username, 
+			String password, 
+			String url, 
+			int portNumber, 
+			String databaseName) 
+	{
+		return new TaskSQLDataConfiguration(username, password, url, portNumber, databaseName);
+	}
+
+	@Override
+	public SQLDataConfiguration createSQLDataConfiguration(String username, 
+			String password, 
+			String connectionString) 
+	{
+		return new TaskSQLDataConfiguration(username, password, connectionString);
+	}
 }

@@ -19,9 +19,10 @@ public class DisplayTaskServlet extends HttpServlet
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException 
 	{
-		TaskService service = ApplicationWrapper.GetUserTaskService();
+		TaskService service = ApplicationWrapper
+				.GetUserTaskServiceFactory()
+				.createTaskService();
 		
-		int userId = -1;
 		List<Task> tasks = service.getTasks();
 				
 		request.setAttribute("tasks", tasks);
