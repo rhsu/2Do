@@ -11,6 +11,7 @@ public class UserTaskServiceFactory implements TaskServiceFactory
 	{
 		return new UserTaskService(
 			ApplicationWrapper.GetUserTaskFactory(),
-			ApplicationWrapper.GetAppContextFactory());
+			ApplicationWrapper.GetAppContextFactory(),
+			ApplicationWrapper.GetSQLDataConfigurationFactory());
 	}
 }

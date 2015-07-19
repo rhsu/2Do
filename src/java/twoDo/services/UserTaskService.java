@@ -9,20 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 import twoDo.ApplicationContext;
 import twoDo.ApplicationContextFactory;
-import twoDo.dataLayer.DataLayer;
+import twoDo.api.SQLDataConfiguration;
 import twoDo.api.Task;
+import twoDo.api.factories.SQLDataConfigurationFactory;
 import twoDo.api.factories.TaskFactory;
 
 public class UserTaskService implements TaskService
 {
-	private final DataLayer dataLayer;
+	private final SQLDataConfigurationFactory sqlConfigFactory;
 	private final TaskFactory taskFactory;
 	private final ApplicationContextFactory appContextFactory;
 	
 	public UserTaskService(TaskFactory taskFactory,
-		ApplicationContextFactory appContextFactory)
+		ApplicationContextFactory appContextFactory,
+		SQLDataConfigurationFactory sqlConfigFactory)
 	{
-		dataLayer = new DataLayer();
+		this.sqlConfigFactory = sqlConfigFactory;
 		this.taskFactory = taskFactory;
 		this.appContextFactory = appContextFactory;
 	}
@@ -32,10 +34,11 @@ public class UserTaskService implements TaskService
 	{	
 		Connection connection = null;
 		CallableStatement statement = null;
+		SQLDataConfiguration config = sqlConfigFactory.createSQLDataConfiguration();
 		
 		try
 		{
-			connection = dataLayer.getConnection();
+			connection = config.GetSqlConnection();
 			statement = connection.prepareCall("{call Task_Create(?, ?)}");
 			statement.setString("pTaskName", task.getName());
 			statement.setString("pTaskContent", task.getContent());
@@ -59,9 +62,11 @@ public class UserTaskService implements TaskService
 		CallableStatement statement = null;
 		ResultSet rs = null;
 		
+		SQLDataConfiguration config = sqlConfigFactory.createSQLDataConfiguration();
+		
 		try
 		{
-			connection = dataLayer.getConnection();
+			connection = config.GetSqlConnection();
 			statement = connection.prepareCall("{ call Task_Update(?, ?) }");
 			statement.setString("pContent", task.getContent());
 			statement.setString("pName", task.getName());
@@ -93,9 +98,11 @@ public class UserTaskService implements TaskService
 		
 		int userId = appContext.getUserId();
 		
+		SQLDataConfiguration config = sqlConfigFactory.createSQLDataConfiguration();
+		
 		try
 		{			
-			connection = dataLayer.getConnection();
+			connection = config.GetSqlConnection();
 			statement = connection.prepareCall("{call Task_Select() }");
 			// statement.setInt("pUserId", userId);
 			
